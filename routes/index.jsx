@@ -7,7 +7,7 @@ export default function Home() {
       <Head>
         <title>Tekken Rank Widget</title>
         {/* Link the external CSS file */}
-        <link rel="stylesheet" href="/TekkenRankWidget.css" />
+        <link rel="stylesheet" href="/static/TekkenRankWidget.css" />
       </Head>
       <TekkenRankWidget />
     </>

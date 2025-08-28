@@ -4,6 +4,7 @@
 
 import * as $api_rank from "./routes/api/rank.ts";
 import * as $index from "./routes/index.jsx";
+import * as $$TekkenRankWidget from "./TekkenRankWidget.jsx";
 
 import { type Manifest } from "$fresh/server.ts";
 
@@ -12,7 +13,9 @@ const manifest = {
     "./routes/api/rank.ts": $api_rank,
     "./routes/index.jsx": $index,
   },
-  islands: {},
+  islands: {
+    "./islands/TekkenRankWidget.jsx": $$TekkenRankWidget,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 

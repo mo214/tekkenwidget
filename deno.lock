@@ -263,6 +263,7 @@
     "https://deno.land/x/esbuild_deno_loader@0.8.5/src/plugin_deno_resolver.ts": "4a2d495a47ea513ba2692c33ac26b6ac8cbe765dad1c77b76fcc62aa8bfc97f5",
     "https://deno.land/x/esbuild_deno_loader@0.8.5/src/shared.ts": "33052684aeb542ebd24da372816bbbf885cd090a7ab0fde7770801f7f5b49572",
     "https://deno.land/x/fresh@1.6.4/dev.ts": "720dd3a64b62b852db7b6ae471c246c5c605cf4a3091c4cbc802790f36d43e4c",
+    "https://deno.land/x/fresh@1.6.4/runtime.ts": "49f4f70c24d14c5d5e112a671ef0314e438e5cd83eacb4f75c6db2fbdc22b540",
     "https://deno.land/x/fresh@1.6.4/server.ts": "d5817615a3ac822d422627f2cd6f850a31e11f7e73b328a79807f722e6519bac",
     "https://deno.land/x/fresh@1.6.4/src/build/aot_snapshot.ts": "4ac6330e5325dd9411fa2a46e97bb289f910fde4be82dc349d3e2b4bb1a7c07d",
     "https://deno.land/x/fresh@1.6.4/src/build/deps.ts": "2402e389a180b815f646de6fcbae3928539b77b154713a4795c248baf588b661",

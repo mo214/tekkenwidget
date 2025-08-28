@@ -5,4 +5,11 @@
     "preview": "deno run -A main.ts"
   },
   "importMap": "./import_map.json"
+  ,
+  "permissions": {
+    "read": ["./"],
+    "net": [
+      "kekken.com"
+    ]
+  }
 }

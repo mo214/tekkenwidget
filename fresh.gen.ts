@@ -13,9 +13,7 @@ const manifest = {
     "./routes/api/rank.ts": $api_rank,
     "./routes/index.jsx": $index,
   },
-  islands: {
-    "./islands/TekkenRankWidget.jsx": $$TekkenRankWidget,
-  },
+  islands: {},
   baseUrl: import.meta.url,
 } satisfies Manifest;
 

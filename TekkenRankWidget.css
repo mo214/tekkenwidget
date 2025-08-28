@@ -1,0 +1,102 @@
+.tekken-widget {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #1a2530);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    max-width: 500px;
+    margin: 20px auto;
+}
+.widget-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #34495e;
+    padding-bottom: 10px;
+}
+.widget-header h2 {
+    margin: 0;
+    color: #f39c12;
+}
+.rank-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+.rank-box {
+    text-align: center;
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 8px;
+}
+.rank-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #f39c12;
+}
+.rank-icon {
+    font-size: 18px;
+    margin-bottom: 8px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rank-rp {
+    font-size: 14px;
+    opacity: 0.8;
+}
+.progress-container {
+    margin: 20px 0;
+}
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+.progress-bar-bg {
+    width: 100%;
+    height: 20px;
+    background: #34495e;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e74c3c, #f39c12);
+    transition: width 0.5s ease;
+    border-radius: 10px;
+}
+.next-rank-info {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+.goal-selector {
+    margin-top: 15px;
+    text-align: center;
+}
+select {
+    background: #2c3e50;
+    color: white;
+    border: 1px solid #34495e;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+.loading, .error {
+    text-align: center;
+    padding: 20px;
+}
+.error {
+    color: #e74c3c;
+}
+.rp-count {
+  font-weight: bold;
+  color: #f39c12;
+}

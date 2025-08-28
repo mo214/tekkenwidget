@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tekken Rank Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+    }
+    .rank-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+    .rank-box {
+      text-align: center;
+    }
+    .rank-box img {
+      height: 100px;
+      display: block;
+      margin: auto;
+    }
+    .progress-bar-bg {
+      width: 100%;
+      height: 20px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff0000, #ffaa00);
+      transition: width 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div class="rank-container">
+    <div class="rank-box">
+      <div id="current-rank-name">Loading...</div>
+      <img id="current-rank-img" src="" alt="Current Rank">
+    </div>
+    <div class="rank-box">
+      <div>Goal: Tekken King</div>
+      <img src="assets/tekken-king.png" alt="Goal Rank">
+    </div>
+  </div>
+
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="progress-bar"></div>
+  </div>
+  <div id="rank-points-label">0 / 195,023 RP</div>
+
+  <script>
+    const ranks = [
+      { name: "Beginner", min: 0, max: 3999, img: "assets/beginner.png" },
+      { name: "1st Dan", min: 4000, max: 7999, img: "assets/1st-dan.png" },
+      { name: "2nd Dan", min: 8000, max: 12000, img: "assets/2nd-dan.png" },
+      { name: "Fighter", min: 12001, max: 17001, img: "assets/fighter.png" },
+      { name: "Strategist", min: 17002, max: 22002, img: "assets/strategist.png" },
+      { name: "Combatant", min: 22003, max: 27003, img: "assets/combatant.png" },
+      { name: "Brawler", min: 27004, max: 33004, img: "assets/brawler.png" },
+      { name: "Ranger", min: 33005, max: 39005, img: "assets/ranger.png" },
+      { name: "Cavalry", min: 39006, max: 45006, img: "assets/cavalry.png" },
+      { name: "Warrior", min: 45007, max: 51007, img: "assets/warrior.png" },
+      { name: "Assailant", min: 51008, max: 57008, img: "assets/assailant.png" },
+      { name: "Dominator", min: 57009, max: 63009, img: "assets/dominator.png" },
+      { name: "Vanquisher", min: 63010, max: 70010, img: "assets/vanquisher.png" },
+      { name: "Destroyer", min: 70011, max: 77011, img: "assets/destroyer.png" },
+      { name: "Eliminator", min: 77012, max: 84012, img: "assets/eliminator.png" },
+      { name: "Garyu", min: 84013, max: 94013, img: "assets/garyu.png" },
+      { name: "Shinryu", min: 94014, max: 104014, img: "assets/shinryu.png" },
+      { name: "Tenryu", min: 104015, max: 114015, img: "assets/tenryu.png" },
+      { name: "Mighty Ruler", min: 114016, max: 125016, img: "assets/mighty-ruler.png" },
+      { name: "Flame Ruler", min: 125017, max: 136017, img: "assets/flame-ruler.png" },
+      { name: "Battle Ruler", min: 136018, max: 147018, img: "assets/battle-ruler.png" },
+      { name: "Fujin", min: 147019, max: 159019, img: "assets/fujin.png" },
+      { name: "Raijin", min: 159020, max: 171020, img: "assets/raijin.png" },
+      { name: "Kishin", min: 171021, max: 183021, img: "assets/kishin.png" },
+      { name: "Bushin", min: 183022, max: 195022, img: "assets/bushin.png" },
+      { name: "Tekken King", min: 195023, max: 208023, img: "assets/tekken-king.png" },
+      { name: "Tekken Emperor", min: 208024, max: 222024, img: "assets/tekken-emperor.png" },
+      { name: "Tekken God", min: 222025, max: 237025, img: "assets/tekken-god.png" },
+      { name: "Tekken God Supreme", min: 237026, max: 253026, img: "assets/tekken-god-supreme.png" },
+      { name: "God of Destruction", min: 253027, max: 308027, img: "assets/god-of-destruction.png" },
+      { name: "God of Destruction I", min: 308028, max: 330028, img: "assets/god-of-destruction-1.png" },
+      { name: "God of Destruction II", min: 330029, max: 352029, img: "assets/god-of-destruction-2.png" },
+      { name: "God of Destruction III", min: 352030, max: 374030, img: "assets/god-of-destruction-3.png" },
+      { name: "God of Destruction IV", min: 374031, max: 396031, img: "assets/god-of-destruction-4.png" },
+      { name: "God of Destruction V", min: 396032, max: 418032, img: "assets/god-of-destruction-5.png" },
+      { name: "God of Destruction VI", min: 418033, max: 440033, img: "assets/god-of-destruction-6.png" },
+      { name: "God of Destruction VII", min: 440034, max: 999999, img: "assets/god-of-destruction-7.png" },
+      { name: "God of Destruction ∞", min: 1000000, max: 9999999, img: "assets/god-of-destruction-infinity.png" }
+    ];
+
+    function getRank(rankPoints) {
+      for (const rank of ranks) {
+        if (rankPoints >= rank.min && rankPoints <= rank.max) {
+          return rank;
+        }
+      }
+      return null;
+    }
+
+    async function updateRank() {
+      try {
+        // Use your backend endpoint (adjust if needed)
+        const res = await fetch("/api/rank");
+        const data = await res.json();
+        const rankPoints = data.rankpoints;
+
+        const currentRank = getRank(rankPoints);
+
+        if (currentRank) {
+          document.getElementById("current-rank-name").textContent = currentRank.name;
+          document.getElementById("current-rank-img").src = currentRank.img;
+        } else {
+          document.getElementById("current-rank-name").textContent = "Unknown Rank";
+          document.getElementById("current-rank-img").src = "";
+        }
+
+        // Progress to Tekken King (change 195023 to another rank if you want)
+        const goalRP = 195023;
+        const progress = Math.min((rankPoints / goalRP) * 100, 100);
+        document.getElementById("progress-bar").style.width = progress + "%";
+        document.getElementById("rank-points-label").textContent =
+          `${rankPoints.toLocaleString()} / ${goalRP.toLocaleString()} RP`;
+
+      } catch (e) {
+        document.getElementById("current-rank-name").textContent = "Error fetching data";
+        document.getElementById("current-rank-img").src = "";
+        document.getElementById("progress-bar").style.width = "0%";
+        document.getElementById("rank-points-label").textContent = "0 / 195,023 RP";
+      }
+    }
+
+    updateRank();
+    setInterval(updateRank, 60000); // refresh every 60s
+  </script>
+</body>
+</html>
